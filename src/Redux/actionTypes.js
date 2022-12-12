@@ -1,0 +1,2 @@
+export const SET_QUIZ_LIST = 'SET_QUIZ_LIST';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
