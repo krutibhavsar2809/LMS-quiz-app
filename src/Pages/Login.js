@@ -61,10 +61,8 @@ const Login = () => {
             }
         }
         if (pswd !== '') {
-            console.log('inside wrong password');
             const regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/g;
             const isPasswordValid = regex.test(pswd);
-            console.log('isPasswordValid', isPasswordValid);
             if (!isPasswordValid) {
                 setErrorsText({ ...errorsText, passwordErrorText: 'Your password must contains atleast number, special charecter, capital letter, small letters and min 8 charecters' });
                 return false;

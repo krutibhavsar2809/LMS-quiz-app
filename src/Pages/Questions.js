@@ -10,7 +10,7 @@ const Questions = () => {
     const quizList = list.length > 0 ?  list : questionsList;
     let timerId;
 
-    const [progress, setProgress] = useState(5);
+    const [progress, setProgress] = useState(30);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
 
@@ -36,7 +36,7 @@ const Questions = () => {
             if (currentQuestionIndex < quizList.length) {
                 setCurrentQuestionIndex(currentQuestionIndex + 1); // change the next question on counter set to 0
                 if (currentQuestionIndex !== quizList.length - 1) {
-                    setProgress(5); // initiate cunter again for next question
+                    setProgress(30); // initiate cunter again for next question
                 }
             }
         }
@@ -50,7 +50,7 @@ const Questions = () => {
 
     const handleSubmitAnswer = () => {
         setCurrentQuestionIndex(currentQuestionIndex + 1); // increment current index to change the question
-        setProgress(5); // initiate counter when user manually click on next button
+        setProgress(30); // initiate counter when user manually click on next button
     };
 
     if (quizList.length === 0) {

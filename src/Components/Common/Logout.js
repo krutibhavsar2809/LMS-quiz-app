@@ -23,7 +23,7 @@ const Logout = () => {
     return (
         <>
             {currentPath.pathname !== '/' && currentPath.pathname !== '/signup' && userProfile?.authenticated &&
-                (<Box>
+                (<Box style={{ float: 'right' }}>
                     <Button variant='contained' color='primary' onClick={handleLogout}>Logout</Button>
                 </Box>)
             }

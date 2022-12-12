@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const FinalScreen = ({ score, totalQue }) => {
     const navigate = useNavigate();
     const handleRetryQuiz = () => {
-        navigate('/');
+        navigate('/home');
     }
     const covertScoreToPersentage = () => {
         return Math.round((100 * score) / totalQue);

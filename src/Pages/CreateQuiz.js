@@ -26,8 +26,8 @@ const CreateQuiz = () => {
 
     useEffect(() => {
         const questionsList = getItemFromLocalStorage('questionList');
-        setTotalQuestionsList(quizList.length > 0 ?  quizList : questionsList);
-    }, [quizList]);
+        setTotalQuestionsList(questionsList);
+    }, []);
 
     const clearQuestionData = () => { // clear input fields to add new question
         setQuestionsData({
@@ -40,9 +40,8 @@ const CreateQuiz = () => {
 
     const handleAddQuestion = () => {
         setQuestionSize(questionSize + 1); // increment to count total number of questions added
-
         const tempArr = totalQuestionsList;
-        tempArr.push(questionsData);
+        tempArr?.push(questionsData);
         setTotalQuestionsList(tempArr); // create array of questions created
 
         clearQuestionData(); // clear input fields to add another question
@@ -84,6 +83,7 @@ const CreateQuiz = () => {
     }
 
     const submitQuiz = () => {
+        console.log('quizList', quizList);
         dispatch(setQuizList(totalQuestionsList)); // saving quiz data to redux
         setItemToLocalStorage('questionList', totalQuestionsList); // saving quiz data to local storage
         nevigate('/home');
@@ -114,14 +114,14 @@ const CreateQuiz = () => {
                     </FormControl>
                 </CardContent>
             </Card>
-            {totalQuestionsList.length > 0
+            {totalQuestionsList?.length > 0
                 && (
                     <>
                         <Card style={{ textAlign: 'left', marginTop: '20px', padding: '5px'}}>
                             <ol>
                                 {
-                                    totalQuestionsList.map((list) => (
-                                        <li style={{ marginBottom: '10px' }}>
+                                    totalQuestionsList.map((list, index) => (
+                                        <li style={{ marginBottom: '10px' }} key={`list_${index}`}>
                                             <Box>Question type: {list.questionType}</Box>
                                             <Box>Question: {list.question}</Box>
                                             <Box>Answer: {list.answer}</Box>
