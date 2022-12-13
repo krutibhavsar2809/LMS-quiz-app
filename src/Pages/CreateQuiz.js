@@ -26,7 +26,9 @@ const CreateQuiz = () => {
 
     useEffect(() => {
         const questionsList = getItemFromLocalStorage('questionList');
-        setTotalQuestionsList(questionsList);
+        if (questionsList?.length > 0) {
+            setTotalQuestionsList(questionsList);
+        }
     }, []);
 
     const clearQuestionData = () => { // clear input fields to add new question
@@ -40,8 +42,10 @@ const CreateQuiz = () => {
 
     const handleAddQuestion = () => {
         setQuestionSize(questionSize + 1); // increment to count total number of questions added
+        console.log('totalQuestionsList', totalQuestionsList);
         const tempArr = totalQuestionsList;
         tempArr?.push(questionsData);
+        console.log('tempArr', tempArr);
         setTotalQuestionsList(tempArr); // create array of questions created
 
         clearQuestionData(); // clear input fields to add another question
